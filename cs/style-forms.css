@@ -1,0 +1,211 @@
+/* * { 
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    height: auto;
+    padding-bottom: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#DDDDDD, #9C9C9C);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    flex-direction: column;
+}
+
+body img {
+    width: 10%;
+    margin-bottom: 25px;
+}
+
+.container {
+    width: 70%;
+    height: auto;
+    display: flex;
+    position: relative;
+    background: #fff;
+    border-radius: 15px;
+    flex-direction: column;
+    box-shadow: 1px 2px 13px 0px rgba(0,0,0,0.34);
+    -webkit-box-shadow: 1px 2px 13px 0px rgba(0,0,0,0.34);
+    -moz-box-shadow: 1px 2px 13px 0px rgba(0,0,0,0.34);
+    padding: 20px;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container form input {
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 2px #C8002C solid;
+}
+
+.container form select {
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 2px #C8002C solid;
+}
+
+.container table {
+    width: 60%;
+    align-self:center;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+  }
+
+  .container th, .container td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .container th {
+    background-color: #f2f2f2;
+  }
+
+.extras-campos input,
+.extras-outros input,
+.campos-adicionais input {
+    width: 500px;
+}
+
+.descricao-arquivos {
+    font-size: 14px;
+    color: #999;
+    margin-top: 5px;
+}
+  
+.enviarForm {
+    background: #C8002C;
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 45px;
+    border: 2px solid #C8002C;
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+.enviarForm:hover{
+    padding: 10px 40px;
+    color: #C8002C;
+    background: #fff;
+} */
+
+* { 
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    height: auto;
+    padding-bottom: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#DDDDDD, #9C9C9C);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    flex-direction: column;
+}
+
+body img {
+    width: 10%;
+    margin-bottom: 25px;
+}
+
+.container {
+    width: 50%;
+    height: auto;
+    display: flex;
+    position: relative;
+    background: #fff;
+    border-radius: 15px;
+    flex-direction: column;
+    box-shadow: 1px 2px 13px 0px rgba(0,0,0,0.34);
+    -webkit-box-shadow: 1px 2px 13px 0px rgba(0,0,0,0.34);
+    -moz-box-shadow: 1px 2px 13px 0px rgba(0,0,0,0.34);
+    padding: 20px;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container form input,
+.container form select {
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 2px #C8002C solid;
+    width: 100%;
+    height: 50px;
+    padding-top: 10px;
+    padding-bottom: none;
+    outline: none;
+}
+
+.container table {
+    width: 60%;
+    align-self:center;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.container th, .container td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.container th {
+    background-color: #f2f2f2;
+}
+
+.container form button {
+    font-size: 14px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #C8002C;
+    color: #fff;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.label_forms {
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.label_forms span {
+    position: absolute;
+    font-size: 1em;
+    color: #232323;
+    margin: 15px 2px;
+    cursor: text;
+}
+
+.label_forms .span-ativo {
+    font-size: 0.7em;
+    font-weight: 600;
+    margin: 1px 2px;
+}

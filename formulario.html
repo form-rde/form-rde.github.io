@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário | RDE</title>
+    <link rel="stylesheet" href="cs/style-forms.css">
+</head>
+<body>
+    <img src="img/Logo-Toyota.png">
+    <div class="container">
+        <form>
+            <label class="label_forms"> 
+                <span><i class="fa-solid fa-industry" style="color: #c8002c;"></i> Fornecedor</span>
+                <input type="text" id="fornecedor" class="input" required>
+            </label>
+
+            <label class="label_forms"> 
+                <span><i class="fa-solid fa-user" style="color: #c8002c;"></i> Responsável</span>
+                <input type="text" id="responsavel" class="input" required>
+            </label>
+
+            <label class="label_forms"> 
+                <span><i class="fa-solid fa-briefcase" style="color: #c8002c;"></i> Cargo</span>
+                <input type="text" id="cargo" class="input" required>
+            </label>
+
+            <label class="label_forms"> 
+                <span><i class="fa-solid fa-envelope" style="color: #c8002c;"></i> Email</span>
+                <input type="email" id="email" class="input" required>
+            </label>
+
+            <label class="label_forms"> 
+                <span><i class="fa-solid fa-phone" style="color: #c8002c;"></i> Telefone</span>
+                <input type="text" id="tel" class="input" required>
+            </label>
+
+            <label class="label_forms"> 
+                <span><i class="fa-solid fa-calendar" style="color: #c8002c;"></i> Data</span>
+                <input type="text" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'" id="data" class="input" required>
+            </label>
+            
+           <br><br>
+           
+            <label class="label_forms">
+                <span><i class="fa-solid fa-box" style="color: #c8002c;"></i> Tipo de embalagem</span>
+                <select class="input">
+                        <option selected disabled></option>
+                        <option>Caixa plástica</option>
+                        <option>Separador</option>
+                        <option>Rack metálico</option>
+                        <option>Caixa polionda</option>
+                        <option>Pallet (base)</option>
+                        <option>Tampa</option>
+                </select>
+            </label>
+
+           <label class="label_forms">
+                <span><i class="fa-solid fa-warehouse" style="color: #c8002c;"></i> Planta</span>
+                <select class="input">
+                        <option disabled selected></option>
+                        <option>Sorocaba</option>
+                        <option>Indaiatuba</option>
+                        <option>São Bernardo do Campo</option>
+                        <option>Porto Feliz</option>
+                        <option>TASA - CRAGEA</option>
+                        <option>PDC - Porto Feliz (P&A)</option>
+                </select>
+            </label>
+
+           <label class="label_forms">
+                <span><i class="fa-solid fa-car-side" style="color: #c8002c;"></i> Projeto</span>
+                <select class="input">
+                    <option disabled selected></option>
+                    <option>Yaris</option>
+                    <option>Corolla</option>
+                    <option>Hilux</option>
+                    <option>Hilux - TASA</option>
+                    <option>Reposição - Service Parts</option>
+                    <option>Etios</option>
+                    <option>Hilux - Guaíba</option>
+                </select>
+            </label>
+
+            <label class="label_forms">
+                <span><i class="fa-solid fa-location-crosshairs" style="color: #c8002c;"></i> Finalidade</span>
+                <select class="input">
+                    <option disabled selected></option>
+                    <option>Order do dia</option>
+                    <option>Produção interna</option>
+                </select>
+            </label>
+
+            <br>
+            <table>
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Ocorrência</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>01</td>
+                    <td>FALTA de embalagens</td>
+                  </tr>
+                  <tr>
+                    <td>02</td>
+                    <td>EXCESSO de embalagens</td>
+                  </tr>
+                  <tr>
+                    <td>03</td>
+                    <td>Embalagem DANIFICADA</td>
+                  </tr>
+                  <tr>
+                    <td>04</td>
+                    <td>Embalagem c/ PARTE FALTANDO</td>
+                  </tr>
+                  <tr>
+                    <td>05</td>
+                    <td>Embalagem INVERTIDA/TROCADA</td>
+                  </tr>
+                  <tr>
+                    <td>06</td>
+                    <td>Embalagem SEM IDENTIFICAÇÃO</td>
+                  </tr>
+                  <tr>
+                    <td>07</td>
+                    <td>Retorno de material na Embalagem</td>
+                  </tr>
+                  <tr>
+                    <td>08</td>
+                    <td>Divergencia Físico x Fiscal</td>
+                  </tr>
+                  <tr>
+                    <td>09</td>
+                    <td>Outros</td>
+                  </tr>
+                </tbody>
+              </table>
+           <label class="label_forms">
+                <span><i class="fa-solid fa-triangle-exclamation" style="color: #c8002c;"></i> Selecione uma ocorrência</span>
+                <select class="input" id="codigo" onchange="mostrarCampos()">
+                    <option disabled selected></option>
+                    <option value="1">Código 01</option>
+                    <option value="2">Código 02</option>
+                    <option value="3">Código 03</option>
+                    <option value="4">Código 04</option>
+                    <option value="5">Código 05</option>
+                    <option value="6">Código 06</option>
+                    <option value="7">Código 07</option>
+                    <option value="8">Código 08</option>
+                    <option value="9">Código 09</option>
+                </select>
+            </label>
+           
+           <div id="extra-outros" style="display: none;">
+            <label for="outros">Outros (Justifique):</label>
+            <input type="text" id="outros">
+          </div>
+
+           <div id="campos-adicionais" style="display: none;">
+            <label class="label_forms">
+                <span><i class="fa-solid fa-tag" style="color: #c8002c;"></i> Part Number</span>
+                <input type="text" id="partNumber"  class="input" required>
+            </label>
+
+            <label class="label_forms">
+              <span><i class="fa-solid fa-boxes-packing" style="color: #c8002c;"></i> Código embalagem</span>
+              <input type="text" id="codEmbalagem"class="input" required>
+            </label>
+             
+            <label class="label_forms">
+              <span><i class="fa-solid fa-boxes-stacked" style="color: #c8002c;"></i> Quantidade</span>
+              <input type="text" id="quantidade" class="input" required>
+            </label>
+
+            <label class="label_forms">
+              <span><i class="fa-solid fa-camera" style="color: #c8002c;"></i> Foto (Nº Referência)</span>
+              <input type="text" id="refFoto" class="input" required>
+            </label>
+
+            <label class="label_forms">
+              <span><i class="fa-regular fa-clock" style="color: #c8002c;"></i> Data e Hora do Recebimento</span>
+              <input type="text" onfocus="(this.type='datetime-local')" onblur="if(!this.value) this.type='text'" id="dataHora" class="input" required>
+            </label>
+             
+            <label>
+              <span><i class="fa-solid fa-file-import" style="color: #c8002c;"></i> Envio das imagens</span>
+              <input type="file" id="imagemEnvio" accept=".jpg, .jpeg, .png, .pdf" class="input" multiple>
+              <p class="descricao-arquivos" required>Formatos suportados: .jpg, .jpeg, .png, .pdf</p>
+            </label>
+
+             <br><br>
+
+            <div id="extra-campos" style="display: none;">
+                <b><p>Estoque interno (Somente para ocorrências CÓD. 01 e 02)</p></b>
+
+                <label class="label_forms">
+                  <span><i class="fa-solid fa-box-open" style="color: #c8002c;"></i> Embalagens vazias</span>
+                  <input type="text" id="embVazia" class="input">
+                </label>
+               
+                <label class="label_forms">
+                  <span><i class="fa-solid fa-dolly" style="color: #c8002c;"></i> Embalagens com peças</span>
+                  <input type="text" id="embPecas" class="input">
+                </label>
+                
+                <label class="label_forms">
+                  <span><i class="fa-solid fa-people-carry-box" style="color: #c8002c;"></i> Embalagens para manutenção</span>
+                  <input type="text" id="embManut" class="input">
+                </label>
+            </div>
+        </div>
+            <!-- <button class="enviarForm" type="submit">Enviar</button> -->
+        </form>
+        <input type="button" value="Enviar" id="botaoEnviar">
+    </div>
+
+    <a href="login.html"> Login </a>
+
+    <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
+    <script>
+        function mostrarCampos() {
+            var codigoSelect = document.getElementById("codigo");
+            var camposAdicionais = document.getElementById("campos-adicionais");
+            var extraCampos = document.getElementById("extra-campos");
+            var extraOutros = document.getElementById("extra-outros");
+      
+            if (codigoSelect.value === "1" || codigoSelect.value === "2") {
+                camposAdicionais.style.display = "block";
+                extraCampos.style.display = "block";
+                extraOutros.style.display = "none";
+            } else if (codigoSelect.value === "3" || codigoSelect.value === "4" || codigoSelect.value === "5" || codigoSelect.value === "6" || codigoSelect.value === "7" || codigoSelect.value === "8") {
+                camposAdicionais.style.display = "block";
+                extraCampos.style.display = "none";
+                extraOutros.style.display = "none";
+            } else if (codigoSelect.value === "9")  {
+                camposAdicionais.style.display = "block";
+                extraCampos.style.display = "none";
+                extraOutros.style.display = "block";
+            } else {
+                camposAdicionais.style.display = "none";
+                extraCampos.style.display = "none";
+                extraOutros.style.display = "none";
+            }
+        }
+      </script>
+      <script src="script/scripts.js"></script>
+      <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDWXXMe5ILeLPBWSwnYnIySt80uGfU_wUM",
+          authDomain: "rde-teste.firebaseapp.com",
+          projectId: "rde-teste",
+          storageBucket: "rde-teste.appspot.com",
+          messagingSenderId: "390945577104",
+          appId: "1:390945577104:web:db9eadcaa5f198d60fe015"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        import {getDatabase, set, get, update, remove, ref, child, push} 
+        from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+
+        const db = getDatabase();
+
+        var enterFornecedor = document.querySelector("#fornecedor");
+        var enterResponsavel = document.querySelector("#responsavel");
+        var enterCargo = document.querySelector("#cargo");
+        var enterEmail = document.querySelector("#email");
+        var enterTelefone = document.querySelector("#tel");
+
+        var btnEnviar = document.querySelector("#botaoEnviar");
+
+        function insertDados(){
+          const newDadosRef = push(ref(db, "RDE"));
+
+          set(newDadosRef, {
+            Fornecedor: enterFornecedor.value,
+            Responsavel: enterResponsavel.value,
+            Cargo: enterCargo.value,
+            Email: enterEmail.value,
+            Telefone: enterTelefone.value
+          })
+          .then(()=> {
+            alert("Dados inseridos com sucesso!")
+          })
+          .catch((error)=> {
+            alert(error)
+          });
+        }
+
+        btnEnviar.addEventListener('click', insertDados);
+      </script>
+</body>
+</html>
