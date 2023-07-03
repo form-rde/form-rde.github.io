@@ -1,3 +1,156 @@
-<html>
-<h1> Teste </h1>
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./script/script.js"></script>
+    <link rel="stylesheet" href="./cs/style.css">
+    <title>Formulário RDE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+</head>
+<body>
+    <style>
+        .login-popup {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
+    
+    .login-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 300px;
+    }
+    
+    .close {
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    form {
+        margin-top: 20px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+    
+    input[type="submit"] {
+        background-color: #C8002C;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+        border: 2px solid #C8002C;
+        transition: .5s ease;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #fff;
+        color: #C8002C;
+    }
+    
+    .btnLogin {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #C8002C;
+        padding: 10px 25px;
+        font-size: 15px;
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 20px;
+        border: 2px solid #C8002C;
+        transition: .5s ease;
+        cursor: pointer;
+    }
+
+    .btnLogin:hover {
+        padding: 10px 40px;
+        color: #C8002C;
+        background: #fff;
+    }
+
+        </style>
+    <button onclick="showLogin()" class="btnLogin">Login</button>
+    <div class="container">
+        <img src="img/Logo-Toyota.png">
+        <h2>Relatório de Divergência de Embalagem</h2>
+        <br>
+        <p>PREENCHIMENTO DE RESPONSABILIDADE DO FORNECEDOR</p>
+        <br><br>
+        <a href="formulario.html">Iniciar</a>
+
+        <!-- Botão de login -->
+        
+        <div id="loginPopup" class="login-popup">
+            <div class="login-content">
+                <span class="close" onclick="hideLogin()">&times;</span>
+                <h2>Login</h2>
+                <form>
+                    <label for="username">Usuário:</label>
+                    <input type="text" id="username" name="username">
+    
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password">
+    
+                    <input type="submit" value="Entrar">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showLogin() {
+            document.getElementById("loginPopup").style.display = "block";
+        }
+
+        function hideLogin() {
+            document.getElementById("loginPopup").style.display = "none";
+        }
+
+        // Adicione o código de validação de login aqui, por exemplo:
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Obtenha os valores do formulário
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Faça a validação do login aqui
+            if (username === "admin" && password === "admin") {
+                alert("Login bem-sucedido!");
+                hideLogin();
+                location.href = "index.html"
+            } else {
+                alert("Nome de usuário ou senha inválidos.");
+            }
+        });
+
+    </script>
+</body>
 </html>
