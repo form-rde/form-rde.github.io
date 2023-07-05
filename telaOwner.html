@@ -15,11 +15,79 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 </head>
-<body>
-    <p>Olá, admin !</p>
-    <h2> deseja coletar os dados do RDE? </h2>    
+<style>
 
-    <button type="button">Sim</button>
+button#downloadButton {
+    background: #C8002C;
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 45px;
+    border: 2px solid #C8002C;
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+button#downloadButton:hover {
+    padding: 10px 40px;
+    color: #C8002C;
+    background: #fff;
+}
+</style>
+<body>
+    <p>Olá, Owner!</p>
+    <h2> Deseja coletar os dados do RDE? </h2>   
+    <br> 
+
+    <button id="downloadButton">Download</button>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+        apiKey: "AIzaSyDWXXMe5ILeLPBWSwnYnIySt80uGfU_wUM",
+        authDomain: "rde-teste.firebaseapp.com",
+        databaseURL: "https://rde-teste-default-rtdb.firebaseio.com",
+        projectId: "rde-teste",
+        storageBucket: "rde-teste.appspot.com",
+        messagingSenderId: "390945577104",
+        appId: "1:390945577104:web:db9eadcaa5f198d60fe015"
+        };  
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, get, set, ref, update, onValue } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+        import { getStorage } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js";
+
+        const db = getDatabase();
+        const storage = getStorage();
+        const databaseRef = ref(db, 'RDE');
+
+        // Manipulador de clique do botão
+        const downloadButton = document.getElementById('downloadButton');
+        downloadButton.addEventListener('click', () => {
+        // Obtenha os dados do banco de dados
+        get(databaseRef).then((snapshot) => {
+            const data = snapshot.val();
+            const jsonData = JSON.stringify(data);
+
+            // Crie um elemento <a> para fazer o download do arquivo
+            const downloadLink = document.createElement('a');
+            downloadLink.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(jsonData);
+            downloadLink.download = 'firebase-database.json';
+            downloadLink.click();
+        });
+        });
+
+    </script>
         
 </body>
 </html>
