@@ -112,6 +112,7 @@ body img {
 }
 
 body{
+    margin-top: 10px;
     height: auto;
     padding-bottom: 200px;
     display: flex;
@@ -208,4 +209,24 @@ body img {
     font-size: 0.7em;
     font-weight: 600;
     margin: 1px 2px;
+}
+
+input#botaoEnviar {
+    background: #C8002C;
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 45px;
+    border: 2px solid #C8002C;
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+input#botaoEnviar:hover {
+    padding: 10px 40px;
+    color: #C8002C;
+    background: #fff;
 }
