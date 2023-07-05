@@ -45,7 +45,7 @@
            
             <label class="label_forms">
                 <span><i class="fa-solid fa-box" style="color: #c8002c;"></i> Tipo de embalagem</span>
-                <select class="input">
+                <select class="input" id="tipoEmbalagem">
                         <option selected disabled></option>
                         <option>Caixa plástica</option>
                         <option>Separador</option>
@@ -58,7 +58,7 @@
 
            <label class="label_forms">
                 <span><i class="fa-solid fa-warehouse" style="color: #c8002c;"></i> Planta</span>
-                <select class="input">
+                <select class="input" id="planta">
                         <option disabled selected></option>
                         <option>Sorocaba</option>
                         <option>Indaiatuba</option>
@@ -71,7 +71,7 @@
 
            <label class="label_forms">
                 <span><i class="fa-solid fa-car-side" style="color: #c8002c;"></i> Projeto</span>
-                <select class="input">
+                <select class="input" id="projeto">
                     <option disabled selected></option>
                     <option>Yaris</option>
                     <option>Corolla</option>
@@ -85,7 +85,7 @@
 
             <label class="label_forms">
                 <span><i class="fa-solid fa-location-crosshairs" style="color: #c8002c;"></i> Finalidade</span>
-                <select class="input">
+                <select class="input" id="finalidade">
                     <option disabled selected></option>
                     <option>Order do dia</option>
                     <option>Produção interna</option>
@@ -141,7 +141,7 @@
               </table>
            <label class="label_forms">
                 <span><i class="fa-solid fa-triangle-exclamation" style="color: #c8002c;"></i> Selecione uma ocorrência</span>
-                <select class="input" id="codigo" onchange="mostrarCampos()">
+                <select class="input" id="codigoOcorrencia" onchange="mostrarCampos()">
                     <option disabled selected></option>
                     <option value="1">Código 01</option>
                     <option value="2">Código 02</option>
@@ -218,12 +218,10 @@
         <input type="button" value="Enviar" id="botaoEnviar">
     </div>
 
-    <a href="telaOwner.html"> Login </a>
-
     <script src="https://kit.fontawesome.com/7c8801c017.js" crossorigin="anonymous"></script>
     <script>
         function mostrarCampos() {
-            var codigoSelect = document.getElementById("codigo");
+            var codigoSelect = document.getElementById("codigoOcorrencia");
             var camposAdicionais = document.getElementById("campos-adicionais");
             var extraCampos = document.getElementById("extra-campos");
             var extraOutros = document.getElementById("extra-outros");
@@ -267,31 +265,82 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
 
-        import {getDatabase, set, get, update, remove, ref, child, push} 
-        from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+        import {getDatabase, set, get, update, remove, ref, child, push} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+        import { getStorage, ref as storageRef, uploadBytes } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js";
 
         const db = getDatabase();
+        const storage = getStorage();
 
         var enterFornecedor = document.querySelector("#fornecedor");
         var enterResponsavel = document.querySelector("#responsavel");
         var enterCargo = document.querySelector("#cargo");
         var enterEmail = document.querySelector("#email");
         var enterTelefone = document.querySelector("#tel");
+        var enterData = document.querySelector("#data");
+        var enterTipoEmbalagem = document.querySelector("#tipoEmbalagem");
+        var enterPlanta = document.querySelector("#planta");
+        var enterProjeto = document.querySelector("#projeto");
+        var enterFinalidade = document.querySelector("#finalidade");
+        var enterOcorrencia = document.querySelector("#codigoOcorrencia");
+        var enterOutros = document.querySelector("#outros");
+        var enterPartNumber = document.querySelector("#partNumber");
+        var enterCodEmbalagem = document.querySelector("#codEmbalagem");
+        var enterQuantidade = document.querySelector("#quantidade");
+        var enterRefFoto = document.querySelector("#refFoto");
+        var enterDataHora = document.querySelector("#dataHora");
+        var enterImagemEnvio= document.querySelector("#imagemEnvio");
+        var enterEmbVazias = document.querySelector("#embVazia");
+        var enterEmbPecas = document.querySelector("#embPecas");
+        var enterEmbManut = document.querySelector("#embManut");
 
         var btnEnviar = document.querySelector("#botaoEnviar");
 
         function insertDados(){
           const newDadosRef = push(ref(db, "RDE"));
 
+          var files = enterImagemEnvio.files;
+
+          for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var fileName = file.name;
+            var fileRef = storageRef(storage, fileName);
+
+            uploadBytes(fileRef, file)
+            .then((snapshot) => {
+              console.log("Imagem enviada com sucesso!");
+              // Aqui você pode acessar a URL da imagem no Firebase Storage usando getDownloadURL()
+              // e salvar essa URL no Firebase Realtime Database, se desejar.
+            })
+            .catch((error) => {
+              console.error("Erro ao enviar a imagem:", error);
+            });
+          }
+
           set(newDadosRef, {
             Fornecedor: enterFornecedor.value,
             Responsavel: enterResponsavel.value,
             Cargo: enterCargo.value,
             Email: enterEmail.value,
-            Telefone: enterTelefone.value
+            Telefone: enterTelefone.value,
+            Data: enterData.value,
+            TipoEmbalagem: enterTipoEmbalagem.value,
+            Planta: enterPlanta.value,
+            Projeto: enterProjeto.value,
+            Finalidade: enterFinalidade.value,
+            Ocorrencia: enterOcorrencia.value,
+            Outros: enterOutros.value,
+            PartNumber: enterPartNumber.value,
+            CodEmbalagem: enterCodEmbalagem.value,
+            Quantidade: enterQuantidade.value,
+            FotoRef: enterRefFoto.value,
+            dataHora: enterDataHora.value,
+            EmbVazias: enterEmbVazias.value,
+            EmbPecas: enterEmbPecas.value,
+            EmbManutencao: enterEmbManut.value            
           })
           .then(()=> {
             alert("Dados inseridos com sucesso!")
+            window.location.href = "index.html"
           })
           .catch((error)=> {
             alert(error)
