@@ -17,8 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Ocorreu um erro ao enviar o aviso.";
     }
 
-    // Redirecionar o usuário de volta para o formulário
-    header('Location: formulario.html');
+    // Redirecionar o usuário de volta para o formulário\
     exit();
 }
 ?>
